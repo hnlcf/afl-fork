@@ -24,7 +24,7 @@
 
 
 VERSION="2.10.0"
-QEMU_URL="http://download.qemu.org/qemu-${VERSION}.tar.xz"
+QEMU_URL="http://download.qemu-project.org/qemu-${VERSION}.tar.xz"
 QEMU_SHA384="68216c935487bc8c0596ac309e1e3ee75c2c4ce898aab796faa321db5740609ced365fedda025678d072d09ac8928105"
 
 echo "================================================="
@@ -92,8 +92,8 @@ CKSUM=`sha384sum -- "$ARCHIVE" 2>/dev/null | cut -d' ' -f1`
 if [ ! "$CKSUM" = "$QEMU_SHA384" ]; then
 
   echo "[*] Downloading QEMU ${VERSION} from the web..."
-  ## rm -f "$ARCHIVE"
-  ## wget -O "$ARCHIVE" -- "$QEMU_URL" || exit 1
+  rm -f "$ARCHIVE"
+  wget -O "$ARCHIVE" -- "$QEMU_URL" || exit 1
 
   CKSUM=`sha384sum -- "$ARCHIVE" 2>/dev/null | cut -d' ' -f1`
 
